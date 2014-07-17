@@ -38,17 +38,14 @@ function scrollDown(base) {
 };
 
 // add message on board
-function addMessage(from, text)
+function addMessage(from, target, text)
 {
-    if(text=="*")return;
 	var messageElement = $(document.createElement("table"));
 	messageElement.addClass("message");
-	//alert("asd");
-	// sanitize
-	//text = util.toStaticHTML(text);
-	var content = '<tr>' + '  <td class="nick">' + from + ': ' + '</td>' + '  <td class="message">' + text + '</td>' + '</tr>';
+
+	var content = '<tr>' + '  <td class="nick">' + from +': ' + '</td>' + '  <td class="message">' + text + '</td>' + '</tr>';
 	messageElement.html(content);
-	//the log is the stream that we view
+
 	$("#chatMsgField").append(messageElement);
 	base += increase;
 	scrollDown(base);
@@ -58,7 +55,7 @@ function addMessage(from, text)
 function queryEntry(uid, callback) 
 {
 	var route = 'gate.gateHandler.queryEntry';
-	pomelo.init({host: window.location.hostname,port: 3014,log: true}, 
+	pomelo.init({host: "192.168.1.102",port: 3014,log: true}, 
 	function() 
 	{
 		pomelo.request(route, {uid: uid}, 
@@ -133,30 +130,32 @@ function()
 	//regist pomelo event
 	pomelo.on('onChat', function(data)
 	{
-		addMessage(data.from,data.msg);
+	    if(data.from!=username)
+	    {
+		    addMessage(data.from,data.target,data.msg);
+		}
 	});
 	pomelo.on('disconnect', function(reason){});
 	
 	//注册事件
-	$("#chatButton").click(function(){
+	$("#chatButton").click(function()
+	{
         $("#chatWindow").toggle(100);
     });
     
-    $("#sendButton").click(function(){
+    $("#sendButton").click(function()
+    {
         var route = "chat.chatHandler.send";
 		var target = "*";
-		//var msg = $("#chatMsgInput").attr("value").replace("\n", "");
-		var msg="FUCKHTML";
-		pomelo.request(route, {rid:rid,content: msg,from: username,target: target},
+		var msg = "LOVEZKX";
+		pomelo.request(route, {rid:rid, content:msg, from:username, target:target},
 		function(data)
-		{
-		});
+		{/*clear ipt*/});
     });
 	
 	$("#loginButton").click(function()
 	{
-	    //username = $("#loginUser").attr("value");
-	    username="AG3";
+	    username = $("#loginUser").val();
 		rid = "world";
 		
 		//query entry of connection
