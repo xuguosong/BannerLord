@@ -39,3 +39,4 @@ Icon
 #Pomelo lib
 /game-server/node_modules/
 /web-server/node_modules/
+logs/
