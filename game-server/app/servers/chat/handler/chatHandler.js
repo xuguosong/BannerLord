@@ -31,15 +31,6 @@ handler.send = function(msg, session, next)
 	{
 	    channel.pushMessage(param);
 	}
-	//the target is specific user
-	/*else {
-		var tuid = msg.target + '*' + rid;
-		var tsid = channel.getMember(tuid)['sid'];
-		channelService.pushMessageByUids(param, [{
-			uid: tuid,
-			sid: tsid
-		}]);
-	}*/
 	next(null, {
 		route: msg.route
 	});

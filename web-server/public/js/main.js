@@ -40,8 +40,7 @@ function scrollDown(base) {
 // add message on board
 function addMessage(from, text)
 {
-    if(text!="*")
-    {
+    if(text=="*")return;
 	var messageElement = $(document.createElement("table"));
 	messageElement.addClass("message");
 	//alert("asd");
@@ -53,7 +52,6 @@ function addMessage(from, text)
 	$("#chatMsgField").append(messageElement);
 	base += increase;
 	scrollDown(base);
-	}
 };
 
 // query connector
@@ -148,7 +146,7 @@ function()
         var route = "chat.chatHandler.send";
 		var target = "*";
 		//var msg = $("#chatMsgInput").attr("value").replace("\n", "");
-		var msg="FUCK HTML";
+		var msg="FUCKHTML";
 		pomelo.request(route, {rid:rid,content: msg,from: username,target: target},
 		function(data)
 		{
@@ -165,7 +163,6 @@ function()
 		queryEntry(username, 
 		function(host, port) 
 		{
-		alert("get real server");
 			pomelo.init({host: host,port: port,log: true}, 
 			function() 
 			{
