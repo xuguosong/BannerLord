@@ -147,10 +147,10 @@ function()
     {
         var route = "chat.chatHandler.send";
 		var target = "*";
-		var msg = "LOVEZKX";
+		var msg = $("#chatMsgInput").val();
 		pomelo.request(route, {rid:rid, content:msg, from:username, target:target},
 		function(data)
-		{/*clear ipt*/});
+		{$("#chatMsgInput").val("");/*clear ipt*/});
     });
 	
 	$("#loginButton").click(function()
