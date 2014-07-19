@@ -76,50 +76,50 @@ $(document).ready(
 function()
 {
     //设置背景图片及样式
-	var tButton=document.getElementById("chatButton");
+	var tButton=$("#chatButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/chat.png)';
 	tButton.style.left=buttonSpace+"px";
 	
-	tButton=document.getElementById("mapButton");
+	tButton=$("#mapButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/map.png)';
 	tButton.style.left=buttonSpace*2+buttonWidth+"px";
 	
-	tButton=document.getElementById("rankButton");
+	tButton=$("#rankButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/rank.png)';
 	tButton.style.left=buttonSpace*3+buttonWidth*2+"px";
 	
-	tButton=document.getElementById("shopButton");
+	tButton=$("#shopButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/shop.png)';
 	tButton.style.left=buttonSpace*4+buttonWidth*3+"px";
 	
-	tButton=document.getElementById("mailButton");
+	tButton=$("#mailButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/mail.png)';
 	tButton.style.left=buttonSpace*5+buttonWidth*4+"px";
 	
-	tButton=document.getElementById("settingButton");
+	tButton=$("#settingButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/setting.png)';
 	tButton.style.left=buttonSpace*6+buttonWidth*5+"px";
 	
 	var resourceBar;
-	resourceBar=document.getElementById("woodAmount");
+	resourceBar=$("#woodAmount");
 	resourceBar.style.backgroundColor="#F00";
 	resourceBar.style.left=resourceBarWidth*0+"px";
 
-	resourceBar=document.getElementById("foodAmount");
+	resourceBar=$("#foodAmount");
 	resourceBar.style.backgroundColor="#A0D";
 	resourceBar.style.left=resourceBarWidth*1+"px";
 	
-	resourceBar=document.getElementById("ironAmount");
+	resourceBar=$("#ironAmount");
 	resourceBar.style.backgroundColor="#DA0";
 	resourceBar.style.left=resourceBarWidth*2+"px";
 	
-	resourceBar=document.getElementById("goldAmount");
+	resourceBar=$("#goldAmount");
 	resourceBar.style.backgroundColor="#EE0";
 	resourceBar.style.left=resourceBarWidth*3+"px";
 	
