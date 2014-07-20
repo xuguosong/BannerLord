@@ -22,6 +22,7 @@ function showLoginView()
 	$("#hudBackground").hide();
 	$("#resourceBackground").hide();
 	$("#loginView").show();
+	$("#worldMap").hide();
 }
 
 function showCityView()
@@ -55,7 +56,7 @@ function addMessage(from, target, text)
 function queryEntry(uid, callback) 
 {
 	var route = 'gate.gateHandler.queryEntry';
-	pomelo.init({host: "192.168.1.102",port: 3014,log: true}, 
+	pomelo.init({host: "127.0.0.1",port: 3014,log: true}, 
 	function() 
 	{
 		pomelo.request(route, {uid: uid}, 
@@ -72,56 +73,56 @@ function queryEntry(uid, callback)
 	});
 };
 
-$(document).ready(
-function()
+$(document).ready(function()
 {
     //设置背景图片及样式
-	var tButton=$("#chatButton");
+	var tButton=document.getElementById("chatButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/chat.png)';
 	tButton.style.left=buttonSpace+"px";
 	
-	tButton=$("#mapButton");
+	tButton=document.getElementById("mapButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/map.png)';
 	tButton.style.left=buttonSpace*2+buttonWidth+"px";
 	
-	tButton=$("#rankButton");
+	tButton=document.getElementById("rankButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/rank.png)';
 	tButton.style.left=buttonSpace*3+buttonWidth*2+"px";
 	
-	tButton=$("#shopButton");
+	tButton=document.getElementById("shopButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/shop.png)';
 	tButton.style.left=buttonSpace*4+buttonWidth*3+"px";
 	
-	tButton=$("#mailButton");
+	tButton=document.getElementById("mailButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/mail.png)';
 	tButton.style.left=buttonSpace*5+buttonWidth*4+"px";
 	
-	tButton=$("#settingButton");
+	tButton=document.getElementById("settingButton");
 	tButton.style.width=tButton.offsetHeight+"px";
 	tButton.style.backgroundImage='url(Img/setting.png)';
 	tButton.style.left=buttonSpace*6+buttonWidth*5+"px";
 	
 	var resourceBar;
-	resourceBar=$("#woodAmount");
+	resourceBar=document.getElementById("woodAmount");
 	resourceBar.style.backgroundColor="#F00";
 	resourceBar.style.left=resourceBarWidth*0+"px";
 
-	resourceBar=$("#foodAmount");
+	resourceBar=document.getElementById("foodAmount");
 	resourceBar.style.backgroundColor="#A0D";
 	resourceBar.style.left=resourceBarWidth*1+"px";
 	
-	resourceBar=$("#ironAmount");
+	resourceBar=document.getElementById("ironAmount");
 	resourceBar.style.backgroundColor="#DA0";
 	resourceBar.style.left=resourceBarWidth*2+"px";
 	
-	resourceBar=$("#goldAmount");
+	resourceBar=document.getElementById("goldAmount");
 	resourceBar.style.backgroundColor="#EE0";
 	resourceBar.style.left=resourceBarWidth*3+"px";
+	
 	
 	//隐藏不必要元素
 	$("#chatWindow").hide();
@@ -150,17 +151,22 @@ function()
 		var msg = $("#chatMsgInput").val();
 		pomelo.request(route, {rid:rid, content:msg, from:username, target:target},
 		function(data)
-		{$("#chatMsgInput").val("");/*clear ipt*/});
+		{$("#chatMsgInput").val("");});
     });
+	
+	$("#mapButton").click(function()
+	{
+	    $("#worldMap").toggle();
+	});
 	
 	$("#loginButton").click(function()
 	{
+	
 	    username = $("#loginUser").val();
 		rid = "world";
-		
 		//query entry of connection
-		queryEntry(username, 
-		function(host, port) 
+		queryEntry(username,
+	 	function(host, port) 
 		{
 			pomelo.init({host: host,port: port,log: true}, 
 			function() 
